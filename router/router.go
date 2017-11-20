@@ -65,6 +65,7 @@ type (
 // 	 handlers ...HanderFunc
 // 	 queryFunc func
 //  }
+
  //get
  func (r *Router) GET(partPath string, handlers ...HanderFunc) {
 	 	path := path.Join(r.basePath, partPath)
