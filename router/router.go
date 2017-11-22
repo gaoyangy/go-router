@@ -12,9 +12,7 @@ const (
 	errUnsupported = "http unsupported"
 	RouterKey      = "%s-%s"
 )
-
 //路由方法的定义
-
 type (
 	//路由对象
 	Router struct {
@@ -44,6 +42,7 @@ type (
 
 //实例
 func New() *Router {
+	//creatMethod()
 	return &Router{
 		routers:  make(map[string]*route),
 		basePath: "/",
@@ -79,6 +78,25 @@ func (r *Router) POST(partPath string, handlers ...HanderFunc) {
 	handlers = r.combineHandlers(handlers)
 	r.addRoute(http.MethodPost, path, handlers)
 }
+// func creatMethod () {
+// 	method := map[func]func{
+// 		PUT: MethodPut,
+// 		PATCH: MethodPatch,
+// 		DELETE: MethodDelete,
+// 		OPTIONS: MethodPutOptions,
+// 		HEAD: MethodHead,
+// 	}
+// 	for k, v := range method {
+// 		fmt.Println(k, v)
+// 		func (r *Router) k (partPath string, handlers ...HanderFunc) {
+// 			path := path.Join(r.basePath, partPath)
+// 			handlers = r.combineHandlers(handlers)
+// 			r.addRoute(http[v], path, handlers)
+// 		}
+// 	}
+// }
+// // add method
+
 
 //run
 func (r *Router) Run(port string) error {
